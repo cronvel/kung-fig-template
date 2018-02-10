@@ -1,0 +1,52 @@
+{
+  "name": "kung-fig-template",
+  "version": "0.41.7",
+  "engines": {
+    "node": ">=6.0.0"
+  },
+  "description": "Template and TemplateElement objects for kung-fig.",
+  "main": "lib/Template.js",
+  "directories": {
+    "test": "test"
+  },
+  "dependencies": {
+    "babel-tower": "^0.14.6",
+    "kung-fig-common-parsers": "^0.41.8"
+  },
+  "devDependencies": {
+    "expect.js": "^0.3.1",
+    "string-kit": "^0.6.7"
+  },
+  "scripts": {
+    "test": "tea-time -R dot"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/cronvel/kung-fig-template.git"
+  },
+  "keywords": [
+    "kung-fig",
+    "template",
+    "object"
+  ],
+  "author": "Cédric Ronvel",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/cronvel/kung-fig-template/issues"
+  },
+  "config": {
+    "tea-time": {
+      "coverDir": [
+        "lib"
+      ]
+    }
+  },
+  "copyright": {
+    "title": "Kung Fig Template",
+    "years": [
+      2015,
+      2018
+    ],
+    "owner": "Cédric Ronvel"
+  }
+}
