@@ -1,11 +1,11 @@
 {
   "name": "kung-fig-template",
-  "version": "0.41.8",
+  "version": "0.42.0",
   "engines": {
     "node": ">=6.0.0"
   },
-  "description": "Template and TemplateElement objects for kung-fig.",
-  "main": "lib/Template.js",
+  "description": "TemplateSentence and TemplateElement objects for kung-fig.",
+  "main": "lib/template.js",
   "directories": {
     "test": "test"
   },
