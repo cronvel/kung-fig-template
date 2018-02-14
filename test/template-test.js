@@ -35,7 +35,7 @@ var template = require( '..' ) ;
 var TemplateSentence = template.Sentence ;
 var TemplateElement = template.Element ;
 
-//var expect = require( 'expect.js' ) ;
+var expect = require( 'expect.js' ) ;
 
 
 
@@ -53,7 +53,18 @@ function debfn( v )
 
 describe( "Template test" , function() {
 	
-	it( "TODO..." ) ;
+	it( "Sentence tests" , function() {
+		expect( TemplateSentence.create( "some raw string" ).getValue( {} ) ).to.be( "some raw string" ) ;
+		expect( TemplateSentence.create( "Hello ${name}!" ).getValue( { name: "bob" } ) ).to.be( "Hello bob!" ) ;
+		expect( TemplateSentence.create( "Hello ${name//uc1}!" ).getValue( { name: "bob" } ) ).to.be( "Hello Bob!" ) ;
+	} ) ;
+	
+	it( "Element tests" , function() {
+		expect( TemplateElement.create( { g: 'f' , altg: [ 'cheval' , 'jument' ] } ).getValue( {} ) ).to.be( "jument" ) ;
+		expect( TemplateElement.create( { g: 'm' , altg: [ 'cheval' , 'jument' ] } ).getValue( {} ) ).to.be( "cheval" ) ;
+		expect( TemplateElement.parse( '[g:f/g?cheval|jument]' ).getValue( {} ) ).to.be( "jument" ) ;
+		expect( TemplateElement.parse( '[g:m/g?cheval|jument]' ).getValue( {} ) ).to.be( "cheval" ) ;
+	} ) ;
 } ) ;
 
 
