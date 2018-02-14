@@ -65,6 +65,33 @@ describe( "Template test" , function() {
 		expect( TemplateElement.parse( '[g:f/g?cheval|jument]' ).getValue( {} ) ).to.be( "jument" ) ;
 		expect( TemplateElement.parse( '[g:m/g?cheval|jument]' ).getValue( {} ) ).to.be( "cheval" ) ;
 	} ) ;
+	
+	it( "Applicable sentence tests" , function() {
+		var tpl = TemplateSentence.create( "Hello ${name}!" ) ;
+		tpl.__isDynamic__ = false ;
+		tpl.__isApplicable__ = true ;
+		expect( tpl.getValue( { name: "bob" } ) ).to.be( tpl ) ;
+		expect( tpl.toString( { name: "bob" } ) ).to.be( "Hello ${name}!" ) ;
+		expect( tpl.apply( { name: "bob" } ) ).to.be( "Hello bob!" ) ;
+	} ) ;
+	
+	it( "Applicable element tests" , function() {
+		var el = TemplateElement.create( { g: 'f' , altg: [ 'cheval' , 'jument' ] } ) ;
+		el.__isDynamic__ = false ;
+		el.__isApplicable__ = true ;
+		expect( el.getValue() ).to.be( el ) ;
+		//expect( el.toString() ).to.be( "" ) ;
+		expect( el.apply() ).to.be( "jument" ) ;
+	} ) ;
+	
+	it.skip( "Applicable element stringify" , function() {
+		var el = TemplateElement.parse( '[g:f/g?cheval|jument]' ) ;
+		el.__isDynamic__ = false ;
+		el.__isApplicable__ = true ;
+		expect( el.getValue() ).to.be( el ) ;
+		expect( el.toString() ).to.be( '[g:f/g?cheval|jument]' ) ;
+		expect( el.apply() ).to.be( "jument" ) ;
+	} ) ;
 } ) ;
 
 
