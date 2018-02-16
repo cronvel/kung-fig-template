@@ -60,8 +60,8 @@ describe( "Template test" , function() {
 	} ) ;
 	
 	it( "Element tests" , function() {
-		expect( TemplateElement.create( { g: 'f' , altg: [ 'cheval' , 'jument' ] } ).getValue( {} ) ).to.be( "jument" ) ;
-		expect( TemplateElement.create( { g: 'm' , altg: [ 'cheval' , 'jument' ] } ).getValue( {} ) ).to.be( "cheval" ) ;
+		expect( TemplateElement.create( { g: 'f' , "g?": [ 'cheval' , 'jument' ] } ).getValue( {} ) ).to.be( "jument" ) ;
+		expect( TemplateElement.create( { g: 'm' , "g?": [ 'cheval' , 'jument' ] } ).getValue( {} ) ).to.be( "cheval" ) ;
 		expect( TemplateElement.parse( '[g:f/g?cheval|jument]' ).getValue( {} ) ).to.be( "jument" ) ;
 		expect( TemplateElement.parse( '[g:m/g?cheval|jument]' ).getValue( {} ) ).to.be( "cheval" ) ;
 	} ) ;
@@ -76,7 +76,7 @@ describe( "Template test" , function() {
 	} ) ;
 	
 	it( "Applicable element tests" , function() {
-		var el = TemplateElement.create( { g: 'f' , altg: [ 'cheval' , 'jument' ] } ) ;
+		var el = TemplateElement.create( { g: 'f' , "g?": [ 'cheval' , 'jument' ] } ) ;
 		el.__isDynamic__ = false ;
 		el.__isApplicable__ = true ;
 		expect( el.getValue() ).to.be( el ) ;
