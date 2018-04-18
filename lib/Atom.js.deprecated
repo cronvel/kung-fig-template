@@ -54,6 +54,8 @@ module.exports = TemplateAtom ;
 
 TemplateAtom.prototype.__prototypeUID__ = 'kung-fig/TemplateAtom' ;
 TemplateAtom.prototype.__prototypeVersion__ = require( '../package.json' ).version ;
+TemplateAtom.prototype.__isDynamic__ = true ;
+TemplateAtom.prototype.__isApplicable__ = false ;
 
 
 
@@ -66,5 +68,46 @@ TemplateAtom.create = function create( atom ) {
 
 TemplateAtom.serializer = function serializer( object ) {
 	return { overide: object } ;
+} ;
+
+
+
+TemplateAtom.prototype.toString = function toString( ... args ) {
+	if ( ! this.__isDynamic__ ) { return '<TemplateAtom-TODO:Stringify>' ; }
+	return this.toStringKFG( ... args ) ;
+} ;
+
+
+
+TemplateAtom.prototype.getRecursiveFinalValue =
+TemplateAtom.prototype.getFinalValue =
+TemplateAtom.prototype.get =
+TemplateAtom.prototype.getValue = function getValue( ctx ) {
+	return this.__isDynamic__ ? this.toStringKFG( ctx ) : this ;
+} ;
+
+
+
+TemplateAtom.prototype.apply = function apply( ctx ) {
+	return this.__isApplicable__ ? this.toStringKFG( ctx ) : this ;
+} ;
+
+
+
+TemplateAtom.parse = function parse( str ) {
+	return Atom.parse( str , { babel: Babel.default , proto: TemplateAtom.prototype } ) ;
+} ;
+
+
+
+TemplateAtom.parseFromKfg = function parseFromKfg( str , runtime , applicable ) {
+	var v = TemplateAtom.parse( commonParsers.parseQuotedString( str , runtime ) ) ;
+
+	if ( applicable ) {
+		v.__isDynamic__ = false ;
+		v.__isApplicable__ = true ;
+	}
+
+	return v ;
 } ;
 
