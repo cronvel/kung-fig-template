@@ -33,7 +33,7 @@
 
 var template = require( '..' ) ;
 var TemplateSentence = template.Sentence ;
-var TemplateElement = template.Element ;
+var TemplateAtom = template.Atom ;
 
 var expect = require( 'expect.js' ) ;
 
@@ -59,11 +59,11 @@ describe( "Template test" , function() {
 		expect( TemplateSentence.create( "Hello ${name//uc1}!" ).getValue( { name: "bob" } ) ).to.be( "Hello Bob!" ) ;
 	} ) ;
 	
-	it( "Element tests" , function() {
-		expect( TemplateElement.create( { g: 'f' , "g?": [ 'cheval' , 'jument' ] } ).getValue( {} ) ).to.be( "jument" ) ;
-		expect( TemplateElement.create( { g: 'm' , "g?": [ 'cheval' , 'jument' ] } ).getValue( {} ) ).to.be( "cheval" ) ;
-		expect( TemplateElement.parse( '[g:f/g?cheval|jument]' ).getValue( {} ) ).to.be( "jument" ) ;
-		expect( TemplateElement.parse( '[g:m/g?cheval|jument]' ).getValue( {} ) ).to.be( "cheval" ) ;
+	it( "Atom tests" , function() {
+		expect( TemplateAtom.create( { g: 'f' , "g?": [ 'cheval' , 'jument' ] } ).getValue( {} ) ).to.be( "jument" ) ;
+		expect( TemplateAtom.create( { g: 'm' , "g?": [ 'cheval' , 'jument' ] } ).getValue( {} ) ).to.be( "cheval" ) ;
+		expect( TemplateAtom.parse( '[g:f/g?cheval|jument]' ).getValue( {} ) ).to.be( "jument" ) ;
+		expect( TemplateAtom.parse( '[g:m/g?cheval|jument]' ).getValue( {} ) ).to.be( "cheval" ) ;
 	} ) ;
 	
 	it( "Applicable sentence tests" , function() {
@@ -75,8 +75,8 @@ describe( "Template test" , function() {
 		expect( tpl.apply( { name: "bob" } ) ).to.be( "Hello bob!" ) ;
 	} ) ;
 	
-	it( "Applicable element tests" , function() {
-		var el = TemplateElement.create( { g: 'f' , "g?": [ 'cheval' , 'jument' ] } ) ;
+	it( "Applicable atom tests" , function() {
+		var el = TemplateAtom.create( { g: 'f' , "g?": [ 'cheval' , 'jument' ] } ) ;
 		el.__isDynamic__ = false ;
 		el.__isApplicable__ = true ;
 		expect( el.getValue() ).to.be( el ) ;
@@ -84,8 +84,8 @@ describe( "Template test" , function() {
 		expect( el.apply() ).to.be( "jument" ) ;
 	} ) ;
 	
-	it.skip( "Applicable element stringify" , function() {
-		var el = TemplateElement.parse( '[g:f/g?cheval|jument]' ) ;
+	it.skip( "Applicable atom stringify" , function() {
+		var el = TemplateAtom.parse( '[g:f/g?cheval|jument]' ) ;
 		el.__isDynamic__ = false ;
 		el.__isApplicable__ = true ;
 		expect( el.getValue() ).to.be( el ) ;
