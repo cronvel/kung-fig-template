@@ -1,6 +1,6 @@
 {
   "name": "kung-fig-template",
-  "version": "0.45.1",
+  "version": "0.45.2",
   "engines": {
     "node": ">=6.0.0"
   },
@@ -10,8 +10,8 @@
     "test": "test"
   },
   "dependencies": {
-    "babel-tower": "^0.17.0",
-    "kung-fig-common-parsers": "^0.41.9"
+    "babel-tower": "^0.17.1",
+    "kung-fig-common": "^0.42.0"
   },
   "devDependencies": {
     "expect.js": "^0.3.1",
