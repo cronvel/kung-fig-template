@@ -24,7 +24,6 @@
 	SOFTWARE.
 */
 
-/* jshint unused:false */
 /* global describe, it, before, after */
 
 "use strict" ;
@@ -35,10 +34,9 @@ var template = require( '..' ) ;
 var TemplateSentence = template.Sentence ;
 var TemplateAtom = template.Atom ;
 
-var expect = require( 'expect.js' ) ;
 
 
-
+/*
 function deb( v )
 {
 	console.log( string.inspect( { style: 'color' , depth: 15 } , v ) ) ;
@@ -48,6 +46,7 @@ function debfn( v )
 {
 	console.log( string.inspect( { style: 'color' , depth: 5 , proto: true , funcDetails: true } , v ) ) ;
 }
+*/
 
 
 
