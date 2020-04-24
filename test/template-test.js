@@ -1,20 +1,20 @@
 /*
 	Kung Fig Template
-	
-	Copyright (c) 2015 - 2018 Cédric Ronvel
-	
+
+	Copyright (c) 2015 - 2020 Cédric Ronvel
+
 	The MIT License (MIT)
-	
+
 	Permission is hereby granted, free of charge, to any person obtaining a copy
 	of this software and associated documentation files (the "Software"), to deal
 	in the Software without restriction, including without limitation the rights
 	to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
 	copies of the Software, and to permit persons to whom the Software is
 	furnished to do so, subject to the following conditions:
-	
+
 	The above copyright notice and this permission notice shall be included in all
 	copies or substantial portions of the Software.
-	
+
 	THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
 	IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
 	FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
@@ -53,9 +53,9 @@ function debfn( v )
 describe( "Template test" , function() {
 	
 	it( "Sentence tests" , function() {
-		expect( TemplateSentence.create( "some raw string" ).getValue( {} ) ).to.be( "some raw string" ) ;
-		expect( TemplateSentence.create( "Hello ${name}!" ).getValue( { name: "bob" } ) ).to.be( "Hello bob!" ) ;
-		expect( TemplateSentence.create( "Hello ${name//uc1}!" ).getValue( { name: "bob" } ) ).to.be( "Hello Bob!" ) ;
+		expect( new TemplateSentence( "some raw string" ).getValue( {} ) ).to.be( "some raw string" ) ;
+		expect( new TemplateSentence( "Hello ${name}!" ).getValue( { name: "bob" } ) ).to.be( "Hello bob!" ) ;
+		expect( new TemplateSentence( "Hello ${name//uc1}!" ).getValue( { name: "bob" } ) ).to.be( "Hello Bob!" ) ;
 	} ) ;
 	
 	/*
@@ -75,7 +75,7 @@ describe( "Template test" , function() {
 	} ) ;
 	
 	it( "Applicable sentence tests" , function() {
-		var tpl = TemplateSentence.create( "Hello ${name}!" ) ;
+		var tpl = new TemplateSentence( "Hello ${name}!" ) ;
 		tpl.__isDynamic__ = false ;
 		tpl.__isApplicable__ = true ;
 		expect( tpl.getValue( { name: "bob" } ) ).to.be( tpl ) ;
