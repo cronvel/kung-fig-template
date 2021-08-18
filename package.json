@@ -1,8 +1,8 @@
 {
   "name": "kung-fig-template",
-  "version": "0.49.0",
+  "version": "0.50.0",
   "engines": {
-    "node": ">=6.0.0"
+    "node": ">=14.15.0"
   },
   "description": "TemplateSentence and TemplateElement objects for kung-fig.",
   "main": "lib/template.js",
@@ -10,7 +10,7 @@
     "test": "test"
   },
   "dependencies": {
-    "babel-tower": "^0.21.1",
+    "babel-tower": "^0.21.2",
     "kung-fig-common": "^0.42.2"
   },
   "scripts": {
