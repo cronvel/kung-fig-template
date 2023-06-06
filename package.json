@@ -1,6 +1,6 @@
 {
   "name": "kung-fig-template",
-  "version": "0.50.0",
+  "version": "0.50.1",
   "engines": {
     "node": ">=14.15.0"
   },
@@ -10,8 +10,8 @@
     "test": "test"
   },
   "dependencies": {
-    "babel-tower": "^0.21.2",
-    "kung-fig-common": "^0.42.2"
+    "babel-tower": "^0.21.3",
+    "kung-fig-common": "^0.43.0"
   },
   "scripts": {
     "test": "tea-time -R dot"
